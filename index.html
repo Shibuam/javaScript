@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div style="display: flex; justify-content: space-around; height: 500px;">
+        <div style="width: 40%;background-color:red; text-align: center;" id="div1">
+            div 1
+        </div>
+        <div style="width: 40%;background-color:red;height: 500px; text-align: center;" id="div2">
+            div 2
+        </div>
+    </div>
+    <div style="display:flex;">
+        <select id="element">
+            <option value="Button">Button</option>
+            <option value="text">text</option>
+            <option value="Checkbox">Checkbox</option>
+            <option value="Textarea">Textarea</option>
+            <option value="Label">Label</option>
+            <option value="Password">Password field</option>
+
+
+        </select>
+        <button onclick="addElement()" id="button">Add Element</button>
+    </div>
+
+</body>
+<script>
+    function addElement() {
+        let value1 = document.getElementById("element").value
+        console.log(value1);
+        let div1Array = []
+        div1Array.push(value1)
+        console.log(div1Array);
+        document.getElementById("div1").innerHTML = div1Array[0]
+        document.getElementById("div1").value = div1Array[0]
+
+
+    }
+
+    var el = document.getElementById("div1")
+    el.addEventListener('contextmenu', function (ev) {
+        ev.preventDefault();
+
+        if (ev.which) {
+            rightclick = (ev.which == 3);
+
+            middleclick = (ev.which == 2);
+
+        }
+        else if (ev.button) rightclick = (ev.button == 2);
+        if (rightclick == true) {
+            var valueDiv1 = document.getElementById("div1").value
+            alert(valueDiv1)
+
+            document.getElementById("div2").innerHTML = valueDiv1
+            document.getElementById("div2").value = valueDiv1
+            document.getElementById("div1").innerHTML = ""
+        } else if (middleclick == true) {
+            alert(middleclick)
+            document.getElementById("div1").innerHTML = ""
+        }
+        return false
+
+    }, false);
+
+    //middle click
+    var el1 = document.getElementById("div1")
+    el1.addEventListener('auxclick', function (ev) {
+        ev.preventDefault();
+
+        if (ev.button == 1) {
+
+            ev.preventDefault();
+            document.getElementById("div1").innerHTML = ""
+
+
+
+
+        }
+        else if (ev.button) rightclick = (ev.button == 2);
+
+        if (middleclick == true) {
+            alert(middleclick)
+            document.getElementById("div1").innerHTML = ""
+        }
+        return false
+
+    }, false);
+
+    var el1 = document.getElementById("div2")
+    el1.addEventListener('auxclick', function (ev) {
+        ev.preventDefault();
+
+        if (ev.button == 1) {
+
+            ev.preventDefault();
+            document.getElementById("div2").innerHTML = ""
+
+
+
+
+        }
+        else if (ev.button) rightclick = (ev.button == 2);
+
+        if (middleclick == true) {
+            alert(middleclick)
+            document.getElementById("div2").innerHTML = ""
+        }
+        return false
+
+    }, false);
+
+
+    var ele = document.getElementById("div2")
+    ele.addEventListener('click', function (ev) {
+        ev.preventDefault();
+        var valueDiv2 = document.getElementById("div2").value
+        alert(valueDiv2)
+        document.getElementById("div1").innerHTML = valueDiv2
+        document.getElementById("div1").value = valueDiv2
+        document.getElementById("div2").innerHTML = ""
+
+        return false
+
+    }, false);
+
+
+</script>
+
+</html>
